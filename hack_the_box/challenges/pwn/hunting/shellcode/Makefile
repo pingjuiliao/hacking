@@ -1,6 +1,6 @@
-sc:
-	gcc -m32 -c sc.S -o sc.o
-	gcc -m32 sc.o -o sc.exe
-	objcopy -S -O binary -j .text sc.o sc.bin
+orw:
+	gcc -m32 -c orw.S -o orw.o
+	gcc -m32 orw.o -o orw.exe
+	objcopy -S -O binary -j .text orw.o orw.bin
 clean:
 	rm *.o *.bin *.exe
