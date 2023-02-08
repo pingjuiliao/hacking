@@ -1,0 +1,7 @@
+**/peda*
+**/core
+**/payload
+**/*.exe
+**/*.bin
+**/*.o
+**/__pycache__
