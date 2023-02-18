@@ -7,6 +7,11 @@
 
 int
 main(int argc, char** argv) {
-  prctl(PR_SET_SECCOMP, SECCOMP_MODE_STRICT);
+  for (int page = 0x60000000; page < 0xf7000000; page += 0x1000) {
+    if (access(page, 0) == "HTB{") {
+      write(1, page, XX);
+    }
+  }
+  
   return 0;
 }
