@@ -5,8 +5,8 @@ char main(void)
   char cVar1;
   int iVar2;
   long in_FS_OFFSET;
-  undefined local_28 [24];
-  long local_10;
+  undefined local_28 [24]; // -0x20(%rbp)
+  long local_10; // -0x8(%rbp)
   
   local_10 = *(long *)(in_FS_OFFSET + 0x28);
   DAT_004b9330 = DAT_004b9330 + '\x01';
