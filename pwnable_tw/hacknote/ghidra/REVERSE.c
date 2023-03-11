@@ -3,11 +3,11 @@ void main(void)
   int iVar1;
   int in_GS_OFFSET;
   char local_18 [4];
-  undefined4 local_14;
+  undefined4 canary;
   undefined *puStack12;
   
   puStack12 = &stack0x00000004;
-  local_14 = *(undefined4 *)(in_GS_OFFSET + 0x14);
+  canary = *(undefined4 *)(in_GS_OFFSET + 0x14);
   setvbuf(stdout,(char *)0x0,2,0);
   setvbuf(stdin,(char *)0x0,2,0);
   do {
@@ -50,7 +50,7 @@ void add_note(void)
   int local_10;
   
   local_10 = *(int *)(in_GS_OFFSET + 0x14);
-  if (DAT_0804a04c < 6) {
+  if (DAT_num_notes < 6) {
     for (local_20 = 0; local_20 < 5; local_20 = local_20 + 1) {
       if (*(int *)(&DAT_0804a050 + local_20 * 4) == 0) {
         pvVar2 = malloc(8);
@@ -60,7 +60,7 @@ void add_note(void)
                     /* WARNING: Subroutine does not return */
           exit(-1);
         }
-        **(code ***)(&DAT_0804a050 + local_20 * 4) = FUN_0804862b;
+        **(code ***)(&DAT_0804a050 + local_20 * 4) = puts_note_content;
         printf("Note size :");
         read(0,local_18,8);
         __size = atoi(local_18);
@@ -75,7 +75,7 @@ void add_note(void)
         printf("Content :");
         read(0,*(void **)(*(int *)(&DAT_0804a050 + local_20 * 4) + 4),__size);
         puts("Success !");
-        DAT_0804a04c = DAT_0804a04c + 1;
+        DAT_num_notes = DAT_num_notes + 1;
         break;
       }
     }
@@ -102,7 +102,7 @@ void delete_note(void)
   printf("Index :");
   read(0,local_14,4);
   iVar1 = atoi(local_14);
-  if ((iVar1 < 0) || (DAT_0804a04c <= iVar1)) {
+  if ((iVar1 < 0) || (DAT_num_notes <= iVar1)) {
     puts("Out of bound!");
                     /* WARNING: Subroutine does not return */
     _exit(0);
@@ -131,7 +131,7 @@ void print_note(void)
   printf("Index :");
   read(0,local_14,4);
   iVar1 = atoi(local_14);
-  if ((iVar1 < 0) || (DAT_0804a04c <= iVar1)) {
+  if ((iVar1 < 0) || (DAT_num_notes <= iVar1)) {
     puts("Out of bound!");
                     /* WARNING: Subroutine does not return */
     _exit(0);
@@ -161,4 +161,11 @@ void prompt(void)
   return;
 }
 
+
+
+void puts_note_content(int param_1)
+{
+  puts(*(char **)(param_1 + 4));
+  return;
+}
 
