@@ -84,7 +84,6 @@ LAB_00401772:
 
 
 void menu(void)
-
 {
   puts("$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
   puts(&DAT_00402070);
@@ -100,7 +99,6 @@ void menu(void)
 
 
 long read_input(long param_1,undefined4 param_2)
-
 {
   int iVar1;
   long lVar2;
@@ -120,7 +118,6 @@ long read_input(long param_1,undefined4 param_2)
 
 
 longlong read_long(void)
-
 {
   longlong lVar1;
   long in_FS_OFFSET;
@@ -139,7 +136,6 @@ longlong read_long(void)
 
 
 void reallocate(void)
-
 {
   ulong uVar1;
   ulong __size;
@@ -173,7 +169,6 @@ void reallocate(void)
 
 
 void rfree(void)
-
 {
   ulong uVar1;
   
