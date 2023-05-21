@@ -14,15 +14,15 @@ void survey(void)
   char local_ec [56]; // $ebp - 0xe8
   size_t heap_buf_size; // $ebp - 0xb0
   size_t stack_buf_reason_size; // $ebp - 0xac
-  undefined comment_buf_size [0x50]; // $ebp - 0xa8
+  undefined stack_buf_comment[0x50]; // $ebp - 0xa8
   undefined4 age; // $ebp -0x58
   void *heap_buf; // $ebp - 0x54
-  undefined stack_buf_reason [0x50]; // $ebp - 0x50
+  undefined stack_buf_reason[0x50]; // $ebp - 0x50
   
   heap_buf_size = 0x3c;
   stack_buf_reason_size = 0x50;
   do {
-    memset(comment_buf_size,0,0x50);
+    memset(stack_buf_comment,0,0x50);
     heap_buf = malloc(0x3c);
     printf("\nPlease enter your name: ");
     fflush(stdout);
@@ -36,12 +36,12 @@ void survey(void)
     fflush(stdout);
     printf("Please enter your comment: ");
     fflush(stdout);
-    read(0,comment_buf_size,heap_buf_size);
+    read(0,stack_buf_comment,heap_buf_size);
     cnt = cnt + 1;
     printf("Name: %s\n",heap_buf);
     printf("Age: %d\n",age);
     printf("Reason: %s\n",stack_buf_reason);
-    printf("Comment: %s\n\n",comment_buf_size);
+    printf("Comment: %s\n\n",stack_buf_comment);
     fflush(stdout);
     sprintf(local_ec,"%d comment so far. We will review them as soon as we can",cnt);
     puts(local_ec);
