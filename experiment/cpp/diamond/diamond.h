@@ -20,6 +20,7 @@ class Food {
   virtual void Statement(void) = 0;
   virtual void RaisePrice(void) = 0;
   virtual void GetPrice(void) = 0;
+  virtual void PrintName(void) = 0;
  protected:
   int price_;
 };
@@ -30,6 +31,7 @@ class Vegetable: public Food {
   virtual void Statement(void);
   virtual void RaisePrice(void);
   virtual void GetPrice(void);
+  virtual void PrintName(void);
 };
 
 class Fruit: public Food {
@@ -38,18 +40,21 @@ class Fruit: public Food {
   virtual void Statement(void);
   virtual void RaisePrice(void);
   virtual void GetPrice(void);
+  virtual void PrintName(void);
 };
 
 class Tomato: public Vegetable, public Fruit {
  public:
   Tomato();
   virtual ~Tomato();
+  virtual void PrintName(void);
 };
 
 class Apple: public Fruit {
  public:
   Apple();
   virtual ~Apple();
+  virtual void PrintName(void);
 };
 
 #endif  // DIAMOND_H

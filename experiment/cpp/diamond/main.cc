@@ -38,4 +38,11 @@ void diamond() {
   veg_tomato->RaisePrice();
   fruit_tomato->GetPrice();
   veg_tomato->GetPrice();
+  
+  // waht tomato will override
+  puts("Override test");
+  Tomato* tomato = new Tomato();
+  fruit_tomato->PrintName();
+  veg_tomato->PrintName();
+  tomato->PrintName();
 }

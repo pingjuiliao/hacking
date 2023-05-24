@@ -7,22 +7,17 @@
 class Employee {
  public:
   virtual ~Employee() = default;
-  virtual void get_paid(void) = 0;
-  virtual void income_report(void);
-  virtual void show_title(void) = 0;
-  void non_virtual(void);
+  virtual void get_paid(void) const = 0;
+  virtual void income_report(void) const;
   std::string title_;
-  int total_income_;
- protected:
-  virtual void protected_method();
+  mutable int total_income_;
 };
 
 class Engineer: public Employee {
  public:
   Engineer();
   virtual ~Engineer();
-  virtual void get_paid(void);
-  virtual void show_title();
+  virtual void get_paid(void) const;
  private:
   std::string fav_prog_language;
 };
@@ -31,14 +26,11 @@ class CTO: public Engineer {
  public:
   CTO();
   virtual ~CTO();
-  virtual void get_paid(void);
-  virtual void show_title(void);
+  virtual void get_paid(void) const;
   
   // income report will use Engineer's
   // virtual void income_report(void);
 };
-
-
 /*
 class HumanResource: public Employee {
  public:
@@ -58,10 +50,7 @@ class CEO : public Engineer {
  public:
   CEO();
   virtual ~CEO();
-  virtual void get_paid(void);
-  virtual void show_title(void);
- private:
-  virtual void pop_shell(void);
+  virtual void get_paid(void) const;
 };
 
 #endif  // A_H

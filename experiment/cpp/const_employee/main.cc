@@ -5,22 +5,20 @@
 #include "a.h"
 
 const int kNumEmployee = 11;
-void hire(Employee**);
-void ceo_privilege(CEO*);
-void JITROP(Employee**);
+void hire(Employee const**);
+void ceo_privilege(CEO const*);
+void JITROP(Employee const**);
 int arbit_write_prompt(void);
 int arbit_read_prompt(void);
-void upcast_demo(CTO* cto);
-void downcast_demo(Engineer* eng);
 
 int main(int argc, char** argv) {
-  Employee* employees[kNumEmployee];
+  Employee const* employees[kNumEmployee];
 
   // hire employees
   hire(employees);
 
   // CEO privilege
-  ceo_privilege((CEO *) employees[0]);
+  ceo_privilege((CEO const*) employees[0]);
 
   // ARBITRARY READ/WRITE VULNERABILITY
   JITROP(employees);
@@ -37,19 +35,11 @@ int main(int argc, char** argv) {
     employees[i]->income_report();
   }
 
-  
-  upcast_demo((CTO *) employees[1]);
-  downcast_demo((Engineer *)employees[1]);
-  downcast_demo((Engineer *)employees[2]);
-  
-  for (int i = 0; i < kNumEmployee; ++i) {
-    employees[i]->non_virtual();
-  }
 
   return 0;
 }
 
-void hire(Employee** employees) {
+void hire(Employee const** employees) {
   for (int i = 0; i < kNumEmployee; ++i) {
     switch(i) {
       case 0:
@@ -65,30 +55,14 @@ void hire(Employee** employees) {
   }
 }
 
-void ceo_privilege(CEO* ceo) {
+
+void ceo_privilege(CEO const* ceo) {
   printf("Initially, income is %u\n", ceo->total_income_);
   ceo->get_paid();
   ceo->income_report();
 }
 
-// 
-void upcast_demo(CTO* cto) {
-  Engineer* eng = dynamic_cast<Engineer*>(cto);
-  std::cout << "Upcasting CTO to engineer\n"; 
-  eng->show_title();
-}
-
-void downcast_demo(Engineer* eng) {
-  CTO* cto = dynamic_cast<CTO*>(eng);
-  if (!cto) {
-    std::cout << "Cannot downcast Engineer to CTO\n";
-    return;
-  }
-  std::cout << "Downcasting engineer to CTO\n";
-  cto->show_title();
-}
-
-void JITROP(Employee** employees) {
+void JITROP(Employee const** employees) {
   std::string cmd;
   for (int i = 0; i < kNumEmployee; ++i) {
     std::cout << "employee[" << std::dec << i << "]: " 

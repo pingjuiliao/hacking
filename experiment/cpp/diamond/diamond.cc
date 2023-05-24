@@ -13,6 +13,9 @@ void Vegetable::RaisePrice(void) {
 void Vegetable::GetPrice(void) {
   std::cout << "Vegie Price: " << price_ << std::endl;
 }
+void Vegetable::PrintName(void) {
+  std::cout << "I am vegies\n";
+}
 
 Fruit::~Fruit() {}
 
@@ -27,6 +30,9 @@ void Fruit::RaisePrice(void) {
 void Fruit::GetPrice(void) {
   std::cout << "Fruit Price: " << price_ << std::endl;
 }
+void Fruit::PrintName(void) {
+  std::cout << "I am fruit\n";
+}
 
 Tomato::Tomato() {
   // we cannot directly uses 
@@ -35,9 +41,16 @@ Tomato::Tomato() {
 }
 Tomato::~Tomato() {}
 
+void Tomato::PrintName(void) {
+  std::cout << "I am tomato\n";
+}
+
 Apple::Apple() {
   price_ = 10;
 }
 
 Apple::~Apple() {}
 
+void Apple::PrintName(void) {
+  std::cout << "I am Apple\n";
+}
