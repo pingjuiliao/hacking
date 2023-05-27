@@ -115,7 +115,7 @@ int remove_flower(void)
   else {
     __printf_chk(1,"Which flower do you want to remove from the garden:");
     __isoc99_scanf("%d",&local_14); // 0xe31: ja: not a vuln
-    if ((local_14 < 100) && ((undefined4 *)(&DAT_302040_garden)[local_14] != (undefined4 *)0x0)) {
+    if ((local_14 < 100) && (&DAT_302040_garden)[local_14] != (undefined4 *)0x0)) {
       (&DAT_302040_garden)[local_14].existence = 0;
       free(*(void **)((&DAT_302040_garden)[local_14].name));
       iVar1 = puts("Successful");
