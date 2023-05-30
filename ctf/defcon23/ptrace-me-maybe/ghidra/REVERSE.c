@@ -1,6 +1,5 @@
 
 undefined8 main(EVP_PKEY_CTX *param_1)
-
 {
   __pid_t __pid;
   int *piVar1;
@@ -53,7 +52,6 @@ undefined8 main(EVP_PKEY_CTX *param_1)
 
 
 undefined8 read_int(char *param_1)
-
 {
   long in_FS_OFFSET;
   undefined8 local_18;
