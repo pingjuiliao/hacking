@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
+
+char *hello = "hello";
 
 int
 main(int argc, char** argv) {
@@ -8,7 +11,7 @@ main(int argc, char** argv) {
   char* msg = "secret";
   FILE* fp;
   char *buf = malloc(100);
-  read(0, buf, 100);
+  strcpy(buf, hello);
   fp = fopen("key.txt", "rw");
   fp->_flags &= ~8;
   fp->_flags |= 0x800;
