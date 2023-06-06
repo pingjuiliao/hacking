@@ -1,0 +1,4 @@
+1. write()ing the unmaped memory does not crash the program
+2. msync() is the way to check if a page is mapped or not
+  (but we won't need this in this challenge)
+3. alarm() can be reset by calling alarm again
